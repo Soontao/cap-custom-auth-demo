@@ -21,15 +21,6 @@ describe('Example Test Case', () => {
     })
     expect(response.status).toBe(401)
 
-    // wrong password, 401 un-auth
-    response = await cdstest.get('/odata/Peoples', {
-      headers: {
-        [AUTHORIZATION]: toAuthHeaderValue(USER.BOB, "wrongPassword")
-      },
-      validateStatus: () => true
-    })
-    expect(response.status).toBe(401)
-
     // user bob, not have read privileges
     response = await cdstest.get('/odata/Peoples', {
       headers: {
