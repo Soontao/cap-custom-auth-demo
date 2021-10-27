@@ -49,6 +49,8 @@ CDS_MYSQL_PORT=3306
 }
 ```
 
+### [Auth Impl](./srv/lib/auth.js)
+
 ### Users
 
 * Alice
