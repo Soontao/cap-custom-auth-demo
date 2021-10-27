@@ -33,6 +33,19 @@
       "internalConsoleOptions": "openOnSessionStart",
       "console": "internalConsole",
       "autoAttachChildProcesses": true
+    },
+    {
+      "name": "cds deploy",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/cds-mysql/bin/cds-mysql-deploy.js",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "envFile": "${workspaceFolder}/.env",
+      "internalConsoleOptions": "openOnSessionStart",
+      "console": "internalConsole",
+      "autoAttachChildProcesses": true
     }
   ]
 }

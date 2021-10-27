@@ -1,0 +1,3 @@
+UserId,EPassword,Scopes
+Alice,"$2b$12$ePgwQmn8HpCr4jkp9SIkFOxD4Ko0ZYCIRp7Ukm6d26ycuQLUrdfy2",people_read
+Bob,"$2b$12$bMV4bg0fdAmoKCQRdvZlO.Nb2TZYG35Z0swvYV.jkACcQ7EXdz7Rq",people_write

@@ -19,3 +19,9 @@ entity People : cuid, managed {
   Name     : PeopleName;
 
 }
+
+entity TechUser : managed {
+  key UserId    : String(255);
+      EPassword : String(255);
+      Scopes    : String(255);
+}
