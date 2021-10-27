@@ -23,7 +23,8 @@ class BasicUser extends cds.User {
  * @param {import("express").Response} res 
  */
 const reject = (res) => {
-  res.status(401).setHeader("WWW-Authenticate", `Basic realm="User"`)
+  res.status(401)
+  res.setHeader("WWW-Authenticate", `Basic realm="User"`)
   res.end()
 }
 

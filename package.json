@@ -12,7 +12,7 @@
   "scripts": {
     "start": "npx cds run",
     "deploy": "cds-mysql-deploy",
-    "test": "jest --silent --forceExit"
+    "test": "jest --forceExit"
   },
   "cds": {
     "requires": {
@@ -33,7 +33,7 @@
   },
   "jest": {
     "testEnvironment": "node",
-    "testTimeout": 10000,
+    "testTimeout": 30000,
     "testMatch": [
       "**/*.test.js"
     ]
