@@ -1,0 +1,48 @@
+{
+  "name": "cap-demo",
+  "version": "1.0.0",
+  "private": "true",
+  "dependencies": {
+    "@sap/cds": "~5.5.4",
+    "cds-mysql": "~5.4.2",
+    "express": "^4"
+  },
+  "scripts": {
+    "start": "npx cds run",
+    "deploy": "cds-mysql-deploy",
+    "test": "jest --silent --forceExit"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "mysql"
+      },
+      "mysql": {
+        "impl": "cds-mysql",
+        "models": [
+          "srv",
+          "db"
+        ],
+        "auth": {
+          "impl": "srv/lib/auth.js"
+        }
+      }
+    }
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testTimeout": 10000,
+    "testMatch": [
+      "**/*.test.js"
+    ]
+  },
+  "devDependencies": {
+    "@types/jest": "^27.0.2",
+    "axios": "^0.22.0",
+    "chai": "^4.3.4",
+    "chai-as-promised": "^7.1.1",
+    "chai-subset": "^1.6.0",
+    "dotenv": "^10.0.0",
+    "jest": "^27.2.5"
+  }
+}

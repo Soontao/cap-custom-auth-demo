@@ -1,0 +1,10 @@
+{
+  "files.exclude": {
+    "**/.git": true,
+  },
+  "editor.formatOnSave": true,
+  "cSpell.words": [
+    "cdstest",
+    "odata"
+  ]
+}

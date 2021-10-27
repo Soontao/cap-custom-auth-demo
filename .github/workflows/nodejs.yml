@@ -1,0 +1,59 @@
+name: node-test
+
+on:
+  push:
+    branches:
+      - "mysql"
+  pull_request:
+    branches:
+      - "mysql"
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+
+    services:
+      mysql:
+        image: mariadb:10.4
+        env:
+          MYSQL_DATABASE: cdstest
+          MYSQL_USER: cdstest
+          MYSQL_PASSWORD: cdstest
+          MYSQL_ROOT_PASSWORD: cdstest
+        ports:
+          - 3306
+        options: --health-cmd="mysqladmin ping" --health-interval=30s --health-timeout=5s --health-retries=10
+
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x]
+        os: [ubuntu-latest]
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cache node modules
+        uses: actions/cache@v1
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-${{ hashFiles('**/package-lock.json') }}
+
+      - name: npm install, and test
+        run: |
+          npm i -g npm
+          npm install
+          npm run deploy
+          npm run test
+        env:
+          CI: true
+          CDS_MYSQL_HOST: "127.0.0.1"
+          CDS_MYSQL_PORT: ${{ job.services.mysql.ports[3306] }}
+          CDS_MYSQL_DATABASE: cdstest
+          CDS_MYSQL_USER: cdstest
+          CDS_MYSQL_PASSWORD: cdstest
